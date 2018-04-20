@@ -11,9 +11,16 @@
 |
 */
 
+Route::get('lang={lang}', function($lang) {
+    \Session::put('lang', $lang);
+    return \Redirect::back();
+  })->middleware('web')->name('change_lang');
+
 
 Route::get('', function () {
-    return view('Welcome');
+
+    return view('welcome');
+  
 });
 
 Route::get('track', 'TrackingController@displaytrackingID');
